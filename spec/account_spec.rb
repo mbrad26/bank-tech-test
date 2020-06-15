@@ -13,4 +13,10 @@ describe Account do
       expect { subject.deposit(1000) }.to change(subject, :balance).by 1000
     end
   end
+
+  describe '#withdraw' do
+    it 'deducts from the balance the amount provided as argument' do
+      expect { subject.withdraw(500) }.to change(subject, :balance).by -500
+    end
+  end
 end
