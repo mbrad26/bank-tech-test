@@ -34,6 +34,14 @@ describe Account do
       expect { subject.withdraw(500) }.to change(subject, :balance).by -500
     end
 
+    it 'creates a transaction' do
+      subject.deposit(1000)
+
+      expect(transaction).to receive(:add_to_transactions).with(debit: 300, balance: 700, type: :debit)
+
+      subject.withdraw(300)
+    end
+
     context 'when insufficient funds' do
       it 'raises an error' do
         error = 'Insufficient funds!'

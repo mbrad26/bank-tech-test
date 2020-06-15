@@ -15,5 +15,6 @@ class Account
   def withdraw(amount)
     raise 'Insufficient funds!' if balance < amount
     @balance -= amount
+    @transaction.add_to_transactions(debit: amount, balance: balance, type: :debit)
   end
 end
