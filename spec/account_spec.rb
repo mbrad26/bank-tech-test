@@ -16,7 +16,18 @@ describe Account do
 
   describe '#withdraw' do
     it 'deducts from the balance the amount provided as argument' do
+      subject.deposit(1000)
+      
       expect { subject.withdraw(500) }.to change(subject, :balance).by -500
+    end
+
+    context 'when insufficient funds' do
+      it 'raises an error' do
+        error = 'Insufficient funds!'
+        subject.deposit(500)
+
+        expect { subject.withdraw(550) }.to raise_error error
+      end
     end
   end
 end
