@@ -2,7 +2,11 @@ require 'account'
 
 describe Account do
   let(:subject) { described_class.new(transaction)}
-  let(:transaction) { class_double 'Transaction' }
+  let(:transaction) { class_double "Transaction" }
+
+  before :each do
+    allow(transaction).to receive(:add_to_transactions)
+  end
 
   it { is_expected.to respond_to(:deposit).with(1).argument }
   it { is_expected.to respond_to(:withdraw).with(1).argument }
@@ -14,6 +18,12 @@ describe Account do
   describe '#deposit' do
     it 'adds to the balance the amount provided as argument' do
       expect { subject.deposit(1000) }.to change(subject, :balance).by 1000
+    end
+
+    it 'creates a transaction' do
+      expect(transaction).to receive(:add_to_transactions).with(credit: 1000, balance: 1000, type: :credit)
+
+      subject.deposit(1000)
     end
   end
 

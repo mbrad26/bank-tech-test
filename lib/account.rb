@@ -9,6 +9,7 @@ class Account
 
   def deposit(amount)
     @balance += amount
+    @transaction.add_to_transactions(credit: amount, balance: balance, type: :credit)
   end
 
   def withdraw(amount)
