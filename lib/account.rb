@@ -2,8 +2,9 @@ class Account
 
   attr_reader :balance
 
-  def initialize
+  def initialize(transaction = Transaction)
     @balance = 0
+    @transaction = transaction
   end
 
   def deposit(amount)

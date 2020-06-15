@@ -1,6 +1,9 @@
 require 'account'
 
 describe Account do
+  let(:subject) { described_class.new(transaction)}
+  let(:transaction) { class_double 'Transaction' }
+
   it { is_expected.to respond_to(:deposit).with(1).argument }
   it { is_expected.to respond_to(:withdraw).with(1).argument }
 
@@ -17,7 +20,7 @@ describe Account do
   describe '#withdraw' do
     it 'deducts from the balance the amount provided as argument' do
       subject.deposit(1000)
-      
+
       expect { subject.withdraw(500) }.to change(subject, :balance).by -500
     end
 
