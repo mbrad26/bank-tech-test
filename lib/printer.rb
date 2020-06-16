@@ -15,7 +15,7 @@ class Printer
       statement += "#{date} || #{credit} || #{debit} || #{balance}\n"
     end
 
-    statement
+     statement
   end
 
   private

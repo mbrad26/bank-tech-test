@@ -24,6 +24,6 @@ class Account
   end
 
   def statement
-    @printer.print_statement
+    puts @printer.print_statement
   end
 end
