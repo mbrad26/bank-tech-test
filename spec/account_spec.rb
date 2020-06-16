@@ -21,7 +21,7 @@ describe Account do
     end
 
     it 'creates a transaction' do
-      expect(transaction).to receive(:add_to_transactions).with(credit: 1000, balance: 1000, type: :credit)
+      expect(transaction).to receive(:add_to_transactions).with(1000, '', 1000)
 
       subject.deposit(1000)
     end
@@ -45,7 +45,7 @@ describe Account do
     it 'creates a transaction' do
       subject.deposit(1000)
 
-      expect(transaction).to receive(:add_to_transactions).with(debit: 300, balance: 700, type: :debit)
+      expect(transaction).to receive(:add_to_transactions).with('', 300, 700)
 
       subject.withdraw(300)
     end
