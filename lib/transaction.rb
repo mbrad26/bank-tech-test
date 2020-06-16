@@ -1,3 +1,5 @@
+require 'date'
+
 class Transaction
   @@transactions = []
   attr_reader :date, :credit, :debit, :balance

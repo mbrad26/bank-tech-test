@@ -146,6 +146,8 @@
       "/Users/student/Desktop/makers/bank-tech-test/lib/transaction.rb": {
         "lines": [
           1,
+          null,
+          1,
           1,
           1,
           null,
@@ -167,6 +169,6 @@
         ]
       }
     },
-    "timestamp": 1592301042
+    "timestamp": 1592301400
   }
 }
