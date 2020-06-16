@@ -88,7 +88,7 @@ I want to be able to print an account statement.
 
 The program is split into three classes: Account, Transaction, Printer. Each class is handling a single responsibility.
 
-##### Account
+#### Account
 
 Account class is starting with an initial balance of 0 and has methods to update its balance when the account holder is making deposits and withdrawals.
 
@@ -96,14 +96,14 @@ Account class is starting with an initial balance of 0 and has methods to update
 * `#withdraw()` - delegates transaction creation to Transaction class
 * `#statement` - delegates statement printing to Printer class
 
-##### Transaction
+#### Transaction
 
 Transaction class is responsible for keeping track of all transactions that the account holder makes. It is using class methods to store and retrieve all the transactions.
 
 * `.add_to_transactions()` - it uses a class variable to store Transaction instances
 * `.transactions` - getter for `@@transactions`
 
-##### Printer
+#### Printer
 
 Printer class is responsible for statement creation. Works with Transaction class to format and print the statement.
 
