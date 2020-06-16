@@ -16,7 +16,7 @@ describe Account do
   it 'has a balance of 0 by default' do
     expect(subject.balance).to eq 0
   end
-
+  
   describe '#deposit' do
     it 'adds to the balance the amount provided as argument' do
       expect { subject.deposit(1000) }.to change(subject, :balance).by 1000
@@ -69,7 +69,6 @@ describe Account do
       end
     end
   end
-
 
   describe '#statement' do
     it 'returns a printed statement' do
