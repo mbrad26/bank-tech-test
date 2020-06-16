@@ -1,7 +1,12 @@
 require 'transaction'
+require 'timecop'
 
 describe Transaction do
   subject { described_class }
+
+  before :each do
+    Timecop.freeze(Time.local(2020, 6, 16))
+  end
 
   after :each do
     @@transactions = []
@@ -9,7 +14,6 @@ describe Transaction do
 
   it 'instantiates with date, credit, debit and balance' do
     transaction = described_class.new(10, '', 10)
-    allow(Date.today).to receive(:to_s) { '2020-06-16' }
 
     expect(transaction.date).to eq '2020-06-16'
     expect(transaction.credit).to eq 10

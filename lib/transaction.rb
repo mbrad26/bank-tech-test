@@ -1,11 +1,9 @@
-require 'date'
-
 class Transaction
   @@transactions = []
   attr_reader :date, :credit, :debit, :balance
 
   def initialize(credit, debit, balance)
-    @date = Date.today.to_s
+    @date = Time.now.strftime("%Y-%m-%d")
     @credit = credit
     @debit = debit
     @balance = balance
