@@ -3,6 +3,7 @@ require 'account'
 describe Account do
   let(:subject) { described_class.new(transaction)}
   let(:transaction) { class_double "Transaction" }
+  let(:printer) { instance_double "Printer"}
 
   before :each do
     allow(transaction).to receive(:add_to_transactions)
@@ -10,6 +11,7 @@ describe Account do
 
   it { is_expected.to respond_to(:deposit).with(1).argument }
   it { is_expected.to respond_to(:withdraw).with(1).argument }
+  it { is_expected.to respond_to(:statement) }
 
   it 'has a balance of 0 by default' do
     expect(subject.balance).to eq 0
@@ -67,4 +69,5 @@ describe Account do
       end
     end
   end
+
 end
