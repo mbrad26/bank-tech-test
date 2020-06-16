@@ -31,6 +31,7 @@ describe Transaction do
       subject.add_to_transactions('', 100, 150)
 
       expect(subject.transactions.length).to eq 2
+      expect(subject.transactions.all? { |t| t.instance_of? Transaction}).to eq true
     end
   end
 end
