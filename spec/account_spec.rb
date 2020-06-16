@@ -1,9 +1,9 @@
 require 'account'
 
 describe Account do
-  let(:subject) { described_class.new(transaction)}
+  let(:subject) { described_class.new(transaction, printer)}
   let(:transaction) { class_double "Transaction" }
-  let(:printer) { instance_double "Printer"}
+  let(:printer) { instance_double "Printer" }
 
   before :each do
     allow(transaction).to receive(:add_to_transactions)
@@ -70,4 +70,12 @@ describe Account do
     end
   end
 
+
+  describe '#statement' do
+    it 'returns a printed statement' do
+      expect(printer).to receive(:print_statement)
+
+      subject.statement
+    end
+  end
 end

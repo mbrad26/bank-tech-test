@@ -2,9 +2,10 @@ class Account
 
   attr_reader :balance
 
-  def initialize(transaction = Transaction)
+  def initialize(transaction = Transaction, printer = Printer.new)
     @balance = 0
     @transaction = transaction
+    @printer = printer
   end
 
   def deposit(amount)
@@ -23,5 +24,6 @@ class Account
   end
 
   def statement
+    @printer.print_statement
   end
 end
