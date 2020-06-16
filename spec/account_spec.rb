@@ -25,6 +25,14 @@ describe Account do
 
       subject.deposit(1000)
     end
+
+    context 'when amount is a negatavive number' do
+      it 'raises an error' do
+        error = 'You can not deposit a negative amount!'
+
+        expect { subject.deposit(-100) }.to raise_error error
+      end
+    end
   end
 
   describe '#withdraw' do

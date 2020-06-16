@@ -8,6 +8,7 @@ class Account
   end
 
   def deposit(amount)
+    raise 'You can not deposit a negative amount!' if amount < 0
     @balance += amount
     @transaction.add_to_transactions(credit: amount, balance: balance, type: :credit)
   end
