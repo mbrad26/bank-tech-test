@@ -3,11 +3,15 @@ require 'transaction.rb'
 describe Transaction do
   subject { described_class }
 
-  it 'instantiates with date, credit, debit and balance' do
-    transaction = Transaction.new(10, '', 10)
-    allow(Date.today).to receive(:to_s) {"2020-06-16"}
+  after :each do
+    @@transactions = []
+  end
 
-    expect(transaction.date).to eq "2020-06-16"
+  it 'instantiates with date, credit, debit and balance' do
+    transaction = described_class.new(10, '', 10)
+    allow(Date.today).to receive(:to_s) { '2020-06-16' }
+
+    expect(transaction.date).to eq '2020-06-16'
     expect(transaction.credit).to eq 10
     expect(transaction.debit).to eq ''
     expect(transaction.balance).to eq 10
@@ -21,4 +25,12 @@ describe Transaction do
     end
   end
 
+  describe '.transactions' do
+    it 'returns all the transactions made by the account holder' do
+      subject.add_to_transactions(250, '', 250)
+      subject.add_to_transactions('', 100, 150)
+
+      expect(subject.transactions.length).to eq 2
+    end
+  end
 end
