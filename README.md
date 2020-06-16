@@ -26,9 +26,63 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 ||  || 1000.00
 ```
 
+### Getting started
+
+Clone this repository to your local machine.
+
+```rb
+# install dependencies
+$ bundle install
+
+# to run tests
+$ rspec
+```
+
+To run the program in the irb
+
+```rb
+$ irb
+
+> require './lib/account'
+ => true
+> require './lib/transaction'
+ => true
+> require './lib/printer'
+ => true
+```
+![irb output Screenshot](Screenshot.png)
+
+
 ## Approach
 
 I started by writing the user stories and braking the task into smaller steps. I then started to identify what classes and methods I need to implement.
+
+### User stories
+
+```
+As a user,
+I want to be able to make a bank account.
+```
+
+```
+As an account holder,
+I want to be able to make a deposit.
+```
+
+```
+As an account holder,
+I want to be able to make a withdrawal.
+```
+
+```
+As an account holder,
+I want to see a warning when there are insufficient funds.
+```
+
+```
+As an account holder,
+I want to be able to print an account statement.
+```
 
 ### Classes and methods
 
@@ -55,21 +109,3 @@ Printer class is responsible for statement creation. Works with Transaction clas
 
 * `#print_statement`
 * `#print_header` - private method
-
-
-### Getting started
-
-Clone this repository to your local machine.
-
-```rb
-# install dependencies
-$ bundle install
-
-# to run tests
-$ rspec
-```
-
- To run the program in the irb
-```rb
-$ irb
-```
