@@ -58,5 +58,13 @@ describe Account do
         expect { subject.withdraw(550) }.to raise_error error
       end
     end
+
+    context 'when amount is a negatavive number' do
+      it 'raises an error' do
+        error = 'Please make sure the amount is a positive number!'
+
+        expect { subject.withdraw(-100) }.to raise_error error
+      end
+    end
   end
 end
