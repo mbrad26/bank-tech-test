@@ -1,4 +1,4 @@
-require 'transaction.rb'
+require 'transaction'
 
 describe Transaction do
   subject { described_class }
