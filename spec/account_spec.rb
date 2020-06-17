@@ -4,6 +4,7 @@ describe Account do
   let(:subject) { described_class.new(transaction, printer)}
   let(:transaction) { class_double "Transaction" }
   let(:printer) { instance_double "Printer" }
+  let(:error) { 'Please make sure the amount is a positive number!' }
 
   before :each do
     allow(transaction).to receive(:add_to_transactions)
@@ -22,8 +23,6 @@ describe Account do
 
     context 'when amount is a negatavive number' do
       it 'raises an error' do
-        error = 'You can not deposit a negative amount!'
-
         expect { subject.deposit(-100) }.to raise_error error
       end
     end
@@ -40,8 +39,6 @@ describe Account do
 
     context 'when amount is a negatavive number' do
       it 'raises an error' do
-        error = 'Please make sure the amount is a positive number!'
-
         expect { subject.withdraw(-100) }.to raise_error error
       end
     end

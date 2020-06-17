@@ -1,6 +1,7 @@
 class Account
 
   attr_reader :balance
+  ERROR = 'Please make sure the amount is a positive number!'
 
   def initialize(transaction = Transaction, printer = Printer.new)
     @transaction = transaction
@@ -8,13 +9,13 @@ class Account
   end
 
   def deposit(amount)
-    raise 'You can not deposit a negative amount!' if amount < 0
+    raise ERROR if amount < 0
 
     @transaction.add_to_transactions(amount, '')
   end
 
   def withdraw(amount)
-    raise 'Please make sure the amount is a positive number!' if amount < 0
+    raise ERROR if amount < 0
 
     @transaction.add_to_transactions('', amount)
   end
