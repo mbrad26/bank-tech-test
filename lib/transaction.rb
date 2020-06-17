@@ -9,8 +9,10 @@ class Transaction
     @balance = balance
   end
 
+  private
+
   def self.add_to_transactions(credit, debit, balance)
-    @@transactions << Transaction.new(credit, debit, balance)
+    @@transactions << self.new(credit, debit, balance)
   end
 
   def self.transactions
