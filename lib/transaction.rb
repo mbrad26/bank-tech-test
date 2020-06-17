@@ -4,17 +4,21 @@ class Transaction
 
   def initialize(credit, debit, balance)
     @date = Time.now.strftime("%Y-%m-%d")
+    @balance = balance
     @credit = credit
     @debit = debit
-    @balance = balance
   end
 
   private
   def self.add_to_transactions(credit, debit)
-    @@transactions << self.new(credit, debit, balance)
+    @@transactions << self.new(credit, debit, self.updated_balance(credit))
   end
 
   def self.transactions
     @@transactions
+  end
+
+  def self.updated_balance(amount)
+    balance = @@transactions.empty? ? amount : @@transactions.last.balance + amount
   end
 end
