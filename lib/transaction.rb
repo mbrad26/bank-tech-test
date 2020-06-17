@@ -20,6 +20,12 @@ class Transaction
   end
 
   def self.updated_balance(amount)
-    @@transactions.empty? ? amount : @@transactions.last.balance + amount
+    raise 'Insufficient funds!' if self.check_balance(amount)
+
+    self.transactions.empty? ? amount : self.transactions.last.balance + amount
+  end
+
+  def self.check_balance(amount)
+    return amount < 0 if self.transactions == []
   end
 end
