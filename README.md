@@ -90,7 +90,7 @@ The program is split into three classes: Account, Transaction, Printer. Each cla
 
 #### Account
 
-Account class is starting with an initial balance of 0 and has methods to update its balance when the account holder is making deposits and withdrawals.
+Account class ties everything together by delegating the functionality of the program to the other classes.
 
 * `#deposit()` - delegates transaction creation to Transaction class
 * `#withdraw()` - delegates transaction creation to Transaction class
@@ -102,6 +102,8 @@ Transaction class is responsible for keeping track of all transactions that the 
 
 * `.add_to_transactions()` - it uses a class variable to store Transaction instances
 * `.transactions` - getter for `@@transactions`
+* `.updated_balance()` - updates the balance of the account
+* `sufficient_balance?()` - checks if there are sufficient funds to make a withdrawal
 
 #### Printer
 
