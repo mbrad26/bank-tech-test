@@ -11,7 +11,8 @@ class Transaction
 
   private
   def self.add_to_transactions(credit, debit)
-    @@transactions << self.new(credit, debit, self.updated_balance(credit))
+    amount = credit == '' ? -debit : credit
+    @@transactions << self.new(credit, debit, self.updated_balance(amount))
   end
 
   def self.transactions
@@ -19,6 +20,6 @@ class Transaction
   end
 
   def self.updated_balance(amount)
-    balance = @@transactions.empty? ? amount : @@transactions.last.balance + amount
+    @@transactions.empty? ? amount : @@transactions.last.balance + amount
   end
 end
