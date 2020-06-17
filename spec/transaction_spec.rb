@@ -3,6 +3,7 @@ require 'timecop'
 
 describe Transaction do
   subject { described_class }
+  let(:error) { 'Insufficient funds!' }
 
   before :each do
     Timecop.freeze(Time.local(2020, 6, 16))
@@ -58,16 +59,12 @@ describe Transaction do
 
       context 'when there are no previous transactions' do
         it 'raises an error' do
-          error = 'Insufficient funds!'
-
           expect { subject.add_to_transactions('', 125) }.to raise_error error
         end
       end
 
       context 'when the withdrawal amount is exceeds the balance' do
         it 'raises an error' do
-          error = 'Insufficient funds!'
-
           expect { subject.add_to_transactions('', 125) }.to raise_error error
         end
       end
