@@ -56,13 +56,21 @@ describe Transaction do
         expect(subject.transactions.last.balance).to eq 75
       end
 
-      context 'when insufficient funds' do
-       it 'raises an error' do
-         error = 'Insufficient funds!'
+      context 'when there are no previous transactions' do
+        it 'raises an error' do
+          error = 'Insufficient funds!'
 
-         expect { subject.add_to_transactions('', 125) }.to raise_error error
-       end
-     end
+          expect { subject.add_to_transactions('', 125) }.to raise_error error
+        end
+      end
+
+      context 'when the withdrawal amount is exceeds the balance' do
+        it 'raises an error' do
+          error = 'Insufficient funds!'
+
+          expect { subject.add_to_transactions('', 125) }.to raise_error error
+        end
+      end
     end
   end
 

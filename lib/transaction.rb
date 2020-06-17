@@ -27,5 +27,6 @@ class Transaction
 
   def self.check_balance(amount)
     return amount < 0 if self.transactions == []
+    self.transactions.last.balance + amount < 0 if self.transactions != []
   end
 end
